@@ -1,0 +1,25 @@
+{
+  "name": "zanner-typeof",
+  "version": "1.0.0",
+  "description": "typeOf",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergej-kucharev/zanner-typeof.git"
+  },
+  "keywords": [
+    "typeOf"
+  ],
+  "author": "Sergey Kukharev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergej-kucharev/zanner-typeof/issues"
+  },
+  "homepage": "https://github.com/sergej-kucharev/zanner-typeof#readme"
+}
