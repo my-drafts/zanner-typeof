@@ -1,30 +1,33 @@
 
-var is = module.exports.is = function(obj){
-	return {}.toString.call(obj).toLowerCase().match(/^[\[]object[\s]+([a-zA-Z]+)[\]]$/)[1];
+var is = module.exports.is = function(_obj){
+	return {}.toString.call(_obj).toLowerCase().match(/^[\[]object[\s]+([a-zA-Z]+)[\]]$/)[1];
 };
 
-var of = module.exports.of = function(obj, objName){
-	switch(is(objName)){
+var of = module.exports.of = function(_obj, _name){
+	switch(is(_name)){
 		case 'array':
-			return objName.some(function(objNameOne){
-				return of(obj, objNameOne);
+			return _name.some(function(name){
+				return of(_obj, name);
 			});
 		case 'string':
-			return is(obj)==objName;
+			return is(_obj)==_name;
 		case 'undefined':
-			return is(obj);
+			return is(_obj);
 		default:
-			throw 'Error in type.of: objName unknown';
+			throw 'Error in type.of: name unknown';
 	}
 };
 
-var ofs = module.exports.ofs = function(objs, objName){
-	switch(of(objs)){
-		case 'array':
-			return !objs.some(function(objOne){
-				return !of(objOne, objName);
-			});
-		default:
-			throw 'Error in type.ofs: objs unknown';
+var ofs = module.exports.ofs = function(_objs, _name){
+	if(!of(_name, ['array', 'string'])){
+		throw 'Error in type.ofs: name unknown';
+	}
+	else if(of(_objs, 'array')){
+		return !_objs.some(function(obj){
+			return !of(obj, _name);
+		});
+	}
+	else{
+		throw 'Error in type.ofs: objects unknown';
 	}
 };
