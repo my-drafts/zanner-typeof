@@ -23,6 +23,9 @@ var typeOf = module.exports.typeOf = function(that, name, thatFlag){
 				return typeOf(that, nameOne, thatFlag);
 			});
 			break;
+		case 'boolean':
+			return typeIs(that, name);
+			break;
 		case 'null':
 			return typeIs(that, thatFlag);
 			break;
